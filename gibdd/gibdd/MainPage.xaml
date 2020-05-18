@@ -1,14 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:gibdd"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
              x:Class="gibdd.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
-</ContentPage>
+    
+        <TabbedPage.Children>
+            <NavigationPage Title="Жалоба" IconImageSource="complaint.png">    
+                <x:Arguments>
+                    <local:ComplaintPage Title="Подать жалобу"/>  
+                </x:Arguments>
+            </NavigationPage> 
+            <NavigationPage Title="Профиль" IconImageSource="account.png">    
+                <x:Arguments>
+                    <local:ProfilePage Title="Профиль"/>  
+                </x:Arguments>
+            </NavigationPage>
+        </TabbedPage.Children>
+    
+</TabbedPage>

@@ -10,6 +10,40 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640"/>
+        <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="CreateProfilePage.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="IntroPage.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ComplaintPage.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="ProfilePage.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="CreateProfilePage.xaml.cs">
+        <DependentUpon>CreateProfilePage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="IntroPage.xaml.cs">
+        <DependentUpon>SelectProfilePage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="ComplaintPage.xaml.cs">
+        <DependentUpon>ComplaintPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="ProfilePage.xaml.cs">
+        <DependentUpon>ProfilePage.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 </Project>

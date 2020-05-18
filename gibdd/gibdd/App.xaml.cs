@@ -11,8 +11,7 @@ namespace gibdd
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new IntroPage());
         }
 
         protected override void OnStart()
