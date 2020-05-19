@@ -1,12 +1,191 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:gibdd"
              x:Class="gibdd.CreateProfilePage">
-
+             
+    <ScrollView>
         <StackLayout>
-            <Label Text="Создать профиль"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+            <Frame x:Name="frame">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Text="Куда будет адресованно происшествие" 
+                           Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Регион" 
+                           Grid.Row="1" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Picker Title="Регион" 
+                            ItemsSource="{x:Static local:Regions.regions}" 
+                            Grid.Row="1" Grid.Column="1"/>
+                    <Label Text="Подразделение" 
+                           Grid.Row="2" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="Подразделение" 
+                           Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Должность" 
+                           Grid.Row="3" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="Должность" 
+                           Grid.Row="3" Grid.Column="1" />
+                    <Label Text="Ф.И.О." 
+                           Grid.Row="4" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="ФИО" 
+                           Grid.Row="4" Grid.Column="1" />
+                </Grid>
+            </Frame>
+               
+               <Frame>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Text="Ваши данные" 
+                           Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Организация?" 
+                           Grid.Row="1" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Switch x:Name="switcher" IsToggled="False" 
+                            Grid.Row="1" Grid.Column="1"/>
+                    <Label Text="Ф.И.О." 
+                           Grid.Row="2" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="ФИО" 
+                           Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Наименование организации" 
+                           Grid.Row="3" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="Организация" 
+                           Grid.Row="3" Grid.Column="1" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}"/>
+                    <Label Text="Дополнительная информация" 
+                           Grid.Row="4" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="Бла бла" 
+                           Grid.Row="4" Grid.Column="1" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}"/>
+                    <Label Text="Исходящий №" 
+                           Grid.Row="5" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}"  VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="123" 
+                           Grid.Row="5" Grid.Column="1" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}"/>
+                    <Label Text="Дата регистрации документа в организации" 
+                           Grid.Row="6" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}" 
+                           VerticalTextAlignment="Center"/>
+                    <DatePicker MinimumDate="01/01/1950"
+                                MaximumDate="{x:Static sys:DateTime.Now}" 
+                                Grid.Row="6" Grid.Column="1" 
+                                IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}" />
+                    <Label Text="№ заказного письма" 
+                           Grid.Row="7" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="331" 
+                           Grid.Row="7" Grid.Column="1" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher}, Path=IsToggled}"/>
+                </Grid>
+            </Frame>
+            
+            <Frame>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                       <Label Text="Адрес для ответа" 
+                              HorizontalTextAlignment="Center" VerticalTextAlignment="Center" 
+                              Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                    <Label Text="Адрес электронной почты" 
+                           Grid.Row="1" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="почта" 
+                           Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Телефон" 
+                           Grid.Row="2" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="+39821938" 
+                           Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Место события регион" 
+                           Grid.Row="3" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Picker Title="Регион" 
+                            ItemsSource="{x:Static local:Regions.regions}" 
+                            Grid.Row="3" Grid.Column="1"/>
+                </Grid>
+            </Frame>
+            
+            <Frame>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Уже обращались по данному вопросу?" 
+                           Grid.Row="0" Grid.Column="0" 
+                           VerticalTextAlignment="Center"/>
+                    <Switch x:Name="switcher2" IsToggled="False" 
+                            Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="Подразделение" 
+                           Grid.Row="1" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher2}, Path=IsToggled}"  VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="Поздразделение" 
+                           Grid.Row="1" Grid.Column="1" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher2}, Path=IsToggled}"/>
+                    <Label Text="Дата" 
+                           Grid.Row="2" Grid.Column="0" 
+                           IsVisible="{Binding Source={x:Reference Name=switcher2}, Path=IsToggled}" 
+                           VerticalTextAlignment="Center"/>
+                    <DatePicker MinimumDate="01/01/1950"
+                                MaximumDate="{x:Static sys:DateTime.Now}" 
+                                Grid.Row="2" Grid.Column="1" 
+                                IsVisible="{Binding Source={x:Reference Name=switcher2}, Path=IsToggled}" />
+                </Grid>
+            </Frame>
+               
+            <Button Text="Сохранить"/>
+            
         </StackLayout>
+    </ScrollView>
     
 </ContentPage>
