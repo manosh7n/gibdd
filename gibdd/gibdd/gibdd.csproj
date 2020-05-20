@@ -31,6 +31,10 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="Screens\MainPage.xaml">
+        <SubType>Designer</SubType>
+        <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -48,6 +52,10 @@
       </Compile>
       <Compile Update="Screens\CreateProfilePage.xaml.cs">
         <DependentUpon>CreateProfilePage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Screens\MainPage.xaml.cs">
+        <DependentUpon>MainPage.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

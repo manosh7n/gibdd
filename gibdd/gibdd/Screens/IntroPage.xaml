@@ -4,7 +4,20 @@
              x:Class="gibdd.IntroPage">
  
         <StackLayout>
-            <Button Text="Профиль 1" Clicked="toMainPage"/>
+            <ListView x:Name="listProfiles" ItemsSource="{Binding}" ItemSelected="toMainPage">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label Text="{Binding fio, StringFormat='Ф.И.О. {0}'}" />
+                                    <Label Text="{Binding email, StringFormat='Адрес электронной почты {0}'}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="Создать профиль" Clicked="createProfile"/>
         </StackLayout>
     

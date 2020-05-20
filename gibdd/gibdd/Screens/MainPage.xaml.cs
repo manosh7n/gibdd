@@ -9,9 +9,10 @@ namespace gibdd
 {
     public partial class MainPage : TabbedPage
     {
-
-        public MainPage()
+        public ProfileData profile { get; set; }
+        public MainPage(ProfileData item)
         {
+            profile = item;
             InitializeComponent();
         }
         

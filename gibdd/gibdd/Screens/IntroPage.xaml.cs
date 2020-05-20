@@ -17,6 +17,13 @@ namespace gibdd
             InitializeComponent();
             Title = "Выберите профиль";
         }
+        
+        protected override async void OnAppearing()
+        {
+            await App.Database.CreateTable();
+            listProfiles.ItemsSource = await App.Database.GetAllProfiles();
+            base.OnAppearing();
+        }
 
         private async void createProfile(object sender, EventArgs e)
         {
@@ -25,7 +32,8 @@ namespace gibdd
         
         private async void toMainPage(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new MainPage());
+            var profile = (ProfileData)listProfiles.SelectedItem;
+            await Navigation.PushModalAsync(new MainPage(profile));
         }
     }
 }

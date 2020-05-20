@@ -22,11 +22,6 @@ namespace gibdd
             InitializeComponent();
             MainPage = new NavigationPage(new IntroPage());
         }
-
-        protected override async void OnStart()
-        {
-            await App.Database.CreateTable();
-        }
         
     }
 }
