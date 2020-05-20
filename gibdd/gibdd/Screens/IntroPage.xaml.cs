@@ -17,14 +17,15 @@ namespace gibdd
             InitializeComponent();
             Title = "Выберите профиль";
         }
+
         private async void createProfile(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CreateProfilePage());
         }
+        
         private async void toMainPage(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new MainPage());
-            //Application.Current.MainPage = new NavigationPage(new MainPage());
         }
     }
 }

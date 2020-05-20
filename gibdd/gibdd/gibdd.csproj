@@ -15,36 +15,40 @@
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="CreateProfilePage.xaml">
+      <EmbeddedResource Update="Screens\IntroPage.xaml">
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="IntroPage.xaml">
+      <EmbeddedResource Update="Screens\ComplaintPage.xaml">
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="ComplaintPage.xaml">
+      <EmbeddedResource Update="Screens\ProfilePage.xaml">
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="ProfilePage.xaml">
+      <EmbeddedResource Update="Screens\CreateProfilePage.xaml">
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="CreateProfilePage.xaml.cs">
-        <DependentUpon>CreateProfilePage.xaml</DependentUpon>
+      <Compile Update="Screens\IntroPage.xaml.cs">
+        <DependentUpon>IntroPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
       </Compile>
-      <Compile Update="IntroPage.xaml.cs">
-        <DependentUpon>SelectProfilePage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="ComplaintPage.xaml.cs">
+      <Compile Update="Screens\ComplaintPage.xaml.cs">
         <DependentUpon>ComplaintPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
       </Compile>
-      <Compile Update="ProfilePage.xaml.cs">
+      <Compile Update="Screens\ProfilePage.xaml.cs">
         <DependentUpon>ProfilePage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Screens\CreateProfilePage.xaml.cs">
+        <DependentUpon>CreateProfilePage.xaml</DependentUpon>
+        <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,25 +9,24 @@ namespace gibdd
 {
     public partial class App : Application
     {
+        private const string DATABASE_NAME = "db.db";
+        private static ProfileDataDB database;
+        public static ProfileDataDB Database =>
+            database ?? (database = new ProfileDataDB(
+                Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    DATABASE_NAME)));
+
         public App()
         {
             InitializeComponent();
             MainPage = new NavigationPage(new IntroPage());
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
-            // Handle when your app starts
+            await App.Database.CreateTable();
         }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
-        }
+        
     }
 }

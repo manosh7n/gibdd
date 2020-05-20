@@ -7,7 +7,7 @@
              
     <ScrollView>
         <StackLayout>
-            <Frame x:Name="frame">
+            <Frame>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -48,7 +48,7 @@
                 </Grid>
             </Frame>
                
-               <Frame>
+            <Frame>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -183,8 +183,7 @@
                 </Grid>
             </Frame>
                
-            <Button Text="Сохранить"/>
-            
+            <Button Text="Добавить профиль"/>
         </StackLayout>
     </ScrollView>
     
