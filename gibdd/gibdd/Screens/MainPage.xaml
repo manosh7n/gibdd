@@ -5,18 +5,4 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              android:TabbedPage.ToolbarPlacement="Bottom"
              x:Class="gibdd.MainPage">
-    
-        <TabbedPage.Children>
-            <NavigationPage Title="Жалоба" IconImageSource="complaint.png">    
-                <x:Arguments>
-                    <local:ComplaintPage Title="Подать жалобу"/>  
-                </x:Arguments>
-            </NavigationPage> 
-            <NavigationPage Title="Профиль" IconImageSource="account.png">    
-                <x:Arguments>
-                    <local:ProfilePage Title="Профиль"/>  
-                </x:Arguments>
-            </NavigationPage>
-        </TabbedPage.Children>
-    
 </TabbedPage>

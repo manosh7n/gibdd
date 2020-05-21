@@ -4,7 +4,7 @@
              x:Class="gibdd.ComplaintPage">
     
         <StackLayout>
-            <Button Text="Подать" />
+            <Button Text="Подать" Clicked="Button_OnClicked"/>
         </StackLayout>
     
 </ContentPage>
