@@ -12,10 +12,12 @@ namespace gibdd
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IntroPage : ContentPage
     {
+        private MainPage mainPage;
         public IntroPage()
         {
             InitializeComponent();
             Title = "Выберите профиль";
+            mainPage = new MainPage();
         }
         
         protected override async void OnAppearing()
@@ -31,9 +33,9 @@ namespace gibdd
         }
         
         private async void toMainPage(object sender, EventArgs e)
-        {
-            var profile = (ProfileData)listProfiles.SelectedItem;
-            await Navigation.PushModalAsync(new MainPage(profile));
+        { 
+            mainPage.setProfile((ProfileData)listProfiles.SelectedItem);
+            await Navigation.PushModalAsync(mainPage);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using gibdd.Screens;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,17 +9,19 @@ namespace gibdd
     public partial class ComplaintPage : ContentPage
     {
         private ProfileData profile { get; set; }
-        public ComplaintPage(ProfileData item)
+        public ComplaintPage()
         {
-            profile = item;
             InitializeComponent();
-            
         }
 
-        private void Button_OnClicked(object sender, EventArgs e)
+        public void setProfile(ProfileData item)
         {
-            Console.Out.WriteLine(profile.fio);
-            Console.Out.WriteLine(profile.regionAdressed);
+            profile = item;
+        }
+
+        private async void sendAppeal(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AppealTextPage(profile));
         }
     }
 }

@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gibdd.ComplaintPage">
-    
+    <ScrollView>
         <StackLayout>
-            <Button Text="Подать" Clicked="Button_OnClicked"/>
+            <Label Text="Текст обращения:"/>
+            <Editor x:Name="editor" HeightRequest="150" AutoSize="TextChanges"/>
+            <Button Text="Прикрепить фото"/>
         </StackLayout>
+    </ScrollView>
     
 </ContentPage>

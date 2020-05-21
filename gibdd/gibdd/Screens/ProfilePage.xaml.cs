@@ -7,11 +7,15 @@ namespace gibdd
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage
     {
-        public ProfileData profile { get; }
-        public ProfilePage(ProfileData item)
+        private ProfileData profile { get; set; }
+        public ProfilePage()
+        {
+            InitializeComponent();
+        }
+
+        public void setProfile(ProfileData item)
         {
             profile = item;
-            InitializeComponent();
             InitializationFields();
         }
 
