@@ -20,12 +20,6 @@ namespace gibdd
             Console.WriteLine("Таблица создана!");
         }
         
-        public async Task DropTable()
-        {
-            await database.DropTableAsync<ProfileData>();
-            Console.WriteLine("Таблица удалена!");
-        }
-
         public async Task AddProfile(ProfileData data)
         {
             await database.InsertAsync(data);
@@ -37,11 +31,7 @@ namespace gibdd
             return await database.Table<ProfileData>().ToListAsync();
             
         }
-        public async Task<ProfileData> GetProfile(int id)
-        {
-            return await database.GetAsync<ProfileData>(id);
-        }
-        
+
         public async Task DeleteProfile(ProfileData item)
         {
             await database.DeleteAsync(item);

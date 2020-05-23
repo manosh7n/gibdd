@@ -4,6 +4,25 @@
              x:Class="gibdd.ComplaintPage">
 
         <StackLayout>
+            <Button Text="Последние обращения" Clicked="showLastMessages"/>
+            
+            <ListView x:Name="listMessage" 
+                      ItemsSource="{Binding}" 
+                      ItemTapped="textToEditor"
+                      IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <Label Text="{Binding message}" />
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
             <Label Text="Текст обращения:"/>
             <Editor x:Name="editor" HeightRequest="150" AutoSize="TextChanges" TextChanged="textChanged"/>
             <StackLayout Orientation="Horizontal">

@@ -33,7 +33,7 @@ namespace gibdd.Screens
         
         public void InitializationFields()
         {
-            regionAdressed.SelectedItem = profile.regionAdressed;
+            regionAdressed.Text = profile.regionAdressed;
             subdivision.Text = profile.subdivision;
             position.Text = profile.position;
             fioAdressed.Text = profile.fioAdressed;
@@ -46,7 +46,7 @@ namespace gibdd.Screens
             letterNumb.Text = profile.letterNumb;
             email.Text = profile.email;
             phone.Text = profile.phone;
-            regionIncident.SelectedItem = profile.regionIncident;
+            regionIncident.Text = profile.regionIncident;
             alreadyApplied.IsToggled = profile.alreadyApplied;
             subdivisionLast.Text = profile.subdivisionLast;
             dateAppeal.Date = Convert.ToDateTime(profile.dateAppeal);
@@ -54,8 +54,12 @@ namespace gibdd.Screens
             imgList.ItemsSource = img;
         }
 
-        private void fullScreenImage(object sender, ItemTappedEventArgs e)
+        private async void send(object sender, EventArgs eventArgs)
         {
+            App.isSend = true;
+            var mess = new Messages(editor.Text);
+            await App.DatabaseMessages.AddMessage(mess);
+            await Navigation.PopModalAsync();
         }
     }
 }

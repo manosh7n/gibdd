@@ -20,6 +20,12 @@ namespace gibdd
             img = new ObservableCollection<Images>();
         }
 
+        protected override async void OnAppearing()
+        {
+            listMessage.ItemsSource = await App.DatabaseMessages.GetAllMessages();
+            base.OnAppearing();
+        }
+
         public void setProfile(ProfileData item)
         {
             profile = item;
@@ -117,12 +123,23 @@ namespace gibdd
                 sendButton.IsEnabled = true;
             }
         }
+
+        private void showLastMessages(object sender, EventArgs e)
+        {
+            listMessage.IsVisible = !listMessage.IsVisible;
+        }
+        
+        private void textToEditor(object sender, ItemTappedEventArgs itemTappedEventArgs)
+        {
+            var temp = (Messages)itemTappedEventArgs.Item;
+            editor.Text = temp.message;
+        }
     }
 
     public class Images
     {
         public ImageSource imageSource { get; set; }
-
+        
         public Images(ImageSource item)
         {
             imageSource = item;

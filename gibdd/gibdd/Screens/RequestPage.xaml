@@ -30,7 +30,7 @@
                     <Label Text="Регион" 
                            Grid.Row="1" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Picker x:Name="regionAdressed" Title="Регион" 
+                    <Entry x:Name="regionAdressed"
                             IsEnabled="False" 
                             Grid.Row="1" Grid.Column="1"/>
                     <Label Text="Подразделение" 
@@ -159,7 +159,7 @@
                     <Label Text="Место события регион" 
                            Grid.Row="3" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Picker x:Name="regionIncident" Title="Регион" 
+                    <Entry x:Name="regionIncident"
                             IsEnabled="False" 
                             Grid.Row="3" Grid.Column="1"/>
                 </Grid>
@@ -212,7 +212,6 @@
                              <StackLayout>
                                     <ListView x:Name="imgList" 
                                               ItemsSource="{Binding}"
-                                              ItemTapped="fullScreenImage"
                                               HeightRequest="300">
                                            <ListView.ItemTemplate> 
                                                   <DataTemplate>
@@ -228,7 +227,7 @@
                              </StackLayout>
                       </StackLayout>
                </Frame>
-               <Button Text="Подать"/>
+               <Button Text="Подать" Clicked="send"/>
         </StackLayout>
     </ScrollView>
 </StackLayout>
