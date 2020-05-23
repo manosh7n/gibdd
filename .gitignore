@@ -3,3 +3,5 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/gibdd/gibdd.Android/gibdd.Android.csproj.user
+/gibdd.sln.DotSettings.user

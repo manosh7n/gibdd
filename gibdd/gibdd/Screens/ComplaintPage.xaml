@@ -6,7 +6,11 @@
         <StackLayout>
             <Label Text="Текст обращения:"/>
             <Editor x:Name="editor" HeightRequest="150" AutoSize="TextChanges"/>
-            <Button Text="Прикрепить фото"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Сфотать" Clicked="takePhoto"/>
+                <Button Text="Из галлереи" Clicked="pickPhoto"/>
+            </StackLayout>
+            <Image x:Name="image" />
         </StackLayout>
     </ScrollView>
     
