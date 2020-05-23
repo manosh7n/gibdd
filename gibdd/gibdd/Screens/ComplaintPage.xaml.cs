@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using Plugin.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,9 +10,13 @@ namespace gibdd
     public partial class ComplaintPage : ContentPage
     {
         private ProfileData profile { get; set; }
+        public ObservableCollection<Images> img { get; set; }
+        
         public ComplaintPage()
         {
             InitializeComponent();
+            BindingContext = this;
+            img = new ObservableCollection<Images>();
         }
 
         public void setProfile(ProfileData item)
@@ -34,22 +39,20 @@ namespace gibdd
                 var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
                     SaveToAlbum = true,
-                    Directory = "gibdd",
+                    Directory = "deleteLater",
                     Name = $"{DateTime.Now:dd.MM.yyyy_hh.mm.ss}.jpg"
                 });
 
                 if (file == null)
                     return;
-
-                image.Source = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    return stream;
-                });
+                
+                img.Add(new Images(ImageSource.FromFile(file.Path)));
+                imgList.ItemsSource = img;
+                
             }
             catch (Exception err)
             {
-                Console.Out.WriteLine("Exception error");
+                await Console.Out.WriteLineAsync(err.Message);
             }
         }
         
@@ -63,16 +66,36 @@ namespace gibdd
                 if (file == null)
                     return;
 
-                image.Source = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    return stream;
-                });
+                img.Add(new Images(ImageSource.FromFile(file.Path)));
+                imgList.ItemsSource = img;
             }
             catch (Exception err)
             {
-                Console.Out.WriteLine("Exception error");
+                await Console.Out.WriteLineAsync(err.Message);
             }
+        }
+
+        private async void deleteImage(object sender, ItemTappedEventArgs e)
+        {
+            var answer = await this.DisplayAlert("Удаление", "Удалить фото?", "Да", "Нет");
+            if (answer)
+            {
+                img.RemoveAt(e.ItemIndex);
+            }
+        }
+    }
+
+    public class Images
+    {
+        public ImageSource imageSource { get; set; }
+
+        public Images(ImageSource item)
+        {
+            imageSource = item;
+        }
+
+        public Images()
+        {
         }
     }
 }
