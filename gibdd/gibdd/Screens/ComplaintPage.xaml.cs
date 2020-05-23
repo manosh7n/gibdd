@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using gibdd.Screens;
 using Plugin.Media;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,7 +12,7 @@ namespace gibdd
     {
         private ProfileData profile { get; set; }
         public ObservableCollection<Images> img { get; set; }
-        
+
         public ComplaintPage()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace gibdd
                 
                 img.Add(new Images(ImageSource.FromFile(file.Path)));
                 imgList.ItemsSource = img;
-                
+                attachCheck();
             }
             catch (Exception err)
             {
@@ -68,6 +69,7 @@ namespace gibdd
 
                 img.Add(new Images(ImageSource.FromFile(file.Path)));
                 imgList.ItemsSource = img;
+                attachCheck();
             }
             catch (Exception err)
             {
@@ -81,6 +83,38 @@ namespace gibdd
             if (answer)
             {
                 img.RemoveAt(e.ItemIndex);
+               attachCheck();
+            }
+        }
+
+        private async void sendRequest(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RequestPage(profile, editor.Text, img));
+        }
+
+        private void textChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(editor.Text))
+            {
+                cameraButton.IsEnabled = false;
+                galleryButton.IsEnabled = false;
+            }
+            else
+            {
+                cameraButton.IsEnabled = true;
+                galleryButton.IsEnabled = true;
+            }
+        }
+
+        public void attachCheck()
+        {
+            if (img.Count == 0)
+            {
+                sendButton.IsEnabled = false;
+            }
+            else
+            {
+                sendButton.IsEnabled = true;
             }
         }
     }

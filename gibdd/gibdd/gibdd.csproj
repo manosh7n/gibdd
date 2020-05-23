@@ -41,6 +41,10 @@
         <SubType>Designer</SubType>
         <Generator></Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="Screens\RequestPage.xaml">
+        <SubType>Designer</SubType>
+        <Generator></Generator>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -66,6 +70,9 @@
       </Compile>
       <Compile Update="Screens\AppealTextPage.xaml.cs">
         <DependentUpon>AppealTextPage.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Screens\RequestPage.xaml.cs">
+        <DependentUpon>RequestPage.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 </Project>

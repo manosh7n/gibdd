@@ -5,10 +5,10 @@
 
         <StackLayout>
             <Label Text="Текст обращения:"/>
-            <Editor x:Name="editor" HeightRequest="150" AutoSize="TextChanges"/>
+            <Editor x:Name="editor" HeightRequest="150" AutoSize="TextChanges" TextChanged="textChanged"/>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Сфотать" Clicked="takePhoto"/>
-                <Button Text="Из галлереи" Clicked="pickPhoto"/>
+                <Button x:Name="cameraButton" Text="Сфотать" Clicked="takePhoto" IsEnabled="False"/>
+                <Button x:Name="galleryButton" Text="Из галлереи" Clicked="pickPhoto" IsEnabled="False"/>
             </StackLayout>
             
             <ScrollView>
@@ -29,6 +29,8 @@
                     <Label Text="testLabel" />
                 </StackLayout>
             </ScrollView>
+            
+            <Button x:Name="sendButton" Text="Подать обращение" Clicked="sendRequest" IsEnabled="False"/>
                 
         </StackLayout>
     
