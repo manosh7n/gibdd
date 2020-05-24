@@ -15,7 +15,7 @@ namespace gibdd.Screens
     {
         public ProfileData profile;
         public string editorText;
-        public ObservableCollection<Images> img;
+        public ObservableCollection<Images> img { get; set; }
 
         public RequestPage(
                             ProfileData profile, 
@@ -60,6 +60,11 @@ namespace gibdd.Screens
             var mess = new Messages(editor.Text);
             await App.DatabaseMessages.AddMessage(mess);
             await Navigation.PopModalAsync();
+        }
+
+        private void toFullScreen(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushModalAsync(new FullScreenPage(img.ElementAt(e.ItemIndex)));
         }
     }
 }

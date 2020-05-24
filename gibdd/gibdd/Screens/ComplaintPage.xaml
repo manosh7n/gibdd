@@ -20,16 +20,16 @@
                 TextChanged="textChanged"
                 BackgroundColor="White"/>
         
-        <StackLayout Orientation="Horizontal">
-        <Label Text="Последнии обращения"/>
+      
+        <Label Text="Последнии обращения" HorizontalOptions="CenterAndExpand"/>
         <ImageButton x:Name="buttonArrow" 
                      Source="downChevron.png"
                      BackgroundColor="White"
-                     HorizontalOptions="End"
-                     HeightRequest="30" 
-                     WidthRequest="40"
+                     HorizontalOptions="CenterAndExpand"
+                     HeightRequest="35" 
+                     WidthRequest="50"
                      Clicked="showLastMessages"/>
-        </StackLayout>
+        
             
         <ListView x:Name="listMessage" 
                       ItemsSource="{Binding}" 

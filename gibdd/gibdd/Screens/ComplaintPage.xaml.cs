@@ -13,6 +13,8 @@ namespace gibdd
         private ProfileData profile { get; set; }
         public ObservableCollection<Images> img { get; set; }
         public bool isShowStory = false;
+        public ImageSource up = ImageSource.FromFile("upChevron.png");
+        public ImageSource down = ImageSource.FromFile("downChevron.png");
 
         public ComplaintPage()
         {
@@ -129,12 +131,12 @@ namespace gibdd
         {
             if (!isShowStory)
             {
-                buttonArrow.Source = ImageSource.FromFile("upChevron.png");
+                buttonArrow.Source = up;
                 isShowStory = true;
             }
             else
             {
-                buttonArrow.Source = ImageSource.FromFile("downChevron.png");
+                buttonArrow.Source = down;
                 isShowStory = false;
             }
             listMessage.IsVisible = !listMessage.IsVisible;

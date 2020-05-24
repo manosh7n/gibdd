@@ -219,12 +219,13 @@
                                     HorizontalOptions="Center"
                                     RowHeight="150"
                                     HeightRequest="200"
-                                    SeparatorColor="Black">
+                                    SeparatorColor="Black"
+                                    ItemTapped="toFullScreen">
                              <ListView.ItemTemplate> 
                                     <DataTemplate>
                                            <ViewCell >
                                                   <Image Source="{Binding imageSource}" 
-                                                         Aspect="AspectFill"/>  
+                                                         Aspect="AspectFill"/>
                                            </ViewCell>  
                                     </DataTemplate>
                              </ListView.ItemTemplate>
