@@ -68,6 +68,12 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
+        <AndroidResource Include="Resources\drawable-hdpi\downChevron.png">
+          <SubType>Designer</SubType>
+          <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable-hdpi\logout.png" />
+        <AndroidResource Include="Resources\drawable-hdpi\upChevron.png" />
         <AndroidResource Include="Resources\xml\file_paths.xml" />
         <None Include="Resources\AboutResources.txt" />
         <None Include="Assets\AboutAssets.txt" />
@@ -82,7 +88,6 @@
           <SubType>Designer</SubType>
           <Generator>MSBuild:UpdateGeneratedFiles</Generator>
         </AndroidResource>
-        <AndroidResource Include="Resources\drawable-hdpi\logout.png" />
         <AndroidResource Include="Resources\layout\Tabbar.axml" />
         <AndroidResource Include="Resources\layout\Toolbar.axml" />
         <AndroidResource Include="Resources\values\styles.xml" />

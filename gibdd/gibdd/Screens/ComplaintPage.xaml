@@ -2,55 +2,91 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gibdd.ComplaintPage">
-
+    
+    <NavigationPage.TitleView>
+        <Label Text="Сформировать обращение" 
+               HorizontalTextAlignment="Center" 
+               FontSize="Large" 
+               TextColor="Black"/>
+    </NavigationPage.TitleView>
+    
+<ScrollView>
+    <StackLayout>
         <StackLayout>
-            <Button Text="Последние обращения" Clicked="showLastMessages"/>
+        <Label Text="Текст обращения:" />
+        <Editor x:Name="editor" 
+                HeightRequest="150" 
+                AutoSize="TextChanges" 
+                TextChanged="textChanged"
+                BackgroundColor="White"/>
+        
+        <StackLayout Orientation="Horizontal">
+        <Label Text="Последнии обращения"/>
+        <ImageButton x:Name="buttonArrow" 
+                     Source="downChevron.png"
+                     BackgroundColor="White"
+                     HorizontalOptions="End"
+                     HeightRequest="30" 
+                     WidthRequest="40"
+                     Clicked="showLastMessages"/>
+        </StackLayout>
             
-            <ListView x:Name="listMessage" 
+        <ListView x:Name="listMessage" 
                       ItemsSource="{Binding}" 
                       ItemTapped="textToEditor"
+                      HasUnevenRows="True"
+                      HeightRequest="100"
+                      VerticalOptions="Start"
+                      SeparatorColor="Black"
                       IsVisible="False">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout>
-                                    <Label Text="{Binding message}" />
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label x:Name="labelMessage" Text="{Binding message}"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
             
-            <Label Text="Текст обращения:"/>
-            <Editor x:Name="editor" HeightRequest="150" AutoSize="TextChanges" TextChanged="textChanged"/>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="cameraButton" Text="Сфотать" Clicked="takePhoto" IsEnabled="False"/>
-                <Button x:Name="galleryButton" Text="Из галлереи" Clicked="pickPhoto" IsEnabled="False"/>
-            </StackLayout>
-            
-            <ScrollView>
-                <StackLayout>
-                    <ListView x:Name="imgList" 
-                              ItemsSource="{Binding}"
-                              ItemTapped="deleteImage">
-                        <ListView.ItemTemplate> 
-                            <DataTemplate>
-                                <ViewCell> 
-                                    <StackLayout>  
-                                        <Image Source="{Binding imageSource}" HeightRequest="200" WidthRequest="200"></Image>  
-                                    </StackLayout>  
-                                </ViewCell>  
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <Label Text="testLabel" />
-                </StackLayout>
-            </ScrollView>
-            
-            <Button x:Name="sendButton" Text="Подать обращение" Clicked="sendRequest" IsEnabled="False"/>
-                
+        <Label Text="Прикрепить фото"/>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="cameraButton" 
+                    Text="Камера" Clicked="takePhoto" 
+                    IsEnabled="False"
+                    Style="{StaticResource buttonAdd}"/>
+            <Button x:Name="galleryButton" 
+                    Text="Из галереи" 
+                    Clicked="pickPhoto" 
+                    IsEnabled="False"
+                    Style="{StaticResource buttonAdd}"/>
         </StackLayout>
-    
+        
+        <ListView x:Name="imgList" 
+                  ItemsSource="{Binding}"
+                  ItemTapped="deleteImage"
+                  VerticalOptions="Start"
+                  HorizontalOptions="Center"
+                  HeightRequest="200"
+                  RowHeight="150"
+                  SeparatorColor="Black"
+                  IsVisible="False">
+            <ListView.ItemTemplate> 
+                <DataTemplate>
+                    <ViewCell >
+                        <Image Source="{Binding imageSource}" 
+                               Aspect="AspectFill"/>  
+                    </ViewCell>  
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
+        
+        <Button x:Name="sendButton" 
+                Text="Подать обращение" 
+                Clicked="sendRequest" IsEnabled="False"
+                Style="{StaticResource buttonMain}"
+                VerticalOptions="End"/>
+                    
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

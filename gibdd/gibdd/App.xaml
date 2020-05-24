@@ -2,8 +2,46 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gibdd.App">
-             
+        
     <Application.Resources>
+            <ResourceDictionary>
+                    <!-- Pallete -->     
+                    <Color x:Key="primary-back-title-color">#ffffff</Color>
+                    <Color x:Key="primary-title-color">#000000</Color>
+                    <Color x:Key="primary-color">#317cac</Color>
+                    <Color x:Key="button-photo-color">#c7c7c7</Color>
+                    
+                    <!-- Navigation page style -->  
+                    <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
+                            <Setter Property="BarBackgroundColor" Value="{StaticResource primary-back-title-color}"/>
+                            <Setter Property="BarTextColor" Value="{StaticResource primary-title-color}"/>
+                            <Setter Property="BackgroundColor" Value="White"/>
+                    </Style>
+                    
+                    <!-- Main Button style -->
+                    <Style x:Key="buttonMain" TargetType="Button">
+                            <Setter Property="BackgroundColor" Value="{StaticResource primary-color}"/>
+                            <Setter Property= "TextColor" Value="#ffffff"/>
+                            <Setter Property= "HeightRequest" Value="40"/>
+                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                            <Setter Property="Margin" Value="0, 0, 0, 2"/>
+                    </Style>
+                    
+                    <!-- Additional Button style -->
+                    <Style x:Key="buttonAdd" TargetType="Button">
+                            <Setter Property="BackgroundColor" Value="{StaticResource button-photo-color}"/>
+                            <Setter Property= "TextColor" Value="#000000"/>
+                            <Setter Property= "HeightRequest" Value="40"/>
+                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                    </Style>
+                    
+                    <!-- Label style -->
+                    <Style ApplyToDerivedTypes="true" TargetType="Label">
+                            <Setter Property="FontSize" Value="Subtitle"/>
+                    </Style>
+                    
+            </ResourceDictionary>
     </Application.Resources>
-    
 </Application>

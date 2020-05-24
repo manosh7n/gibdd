@@ -16,7 +16,6 @@ namespace gibdd
         public IntroPage()
         {
             InitializeComponent();
-            Title = "Выберите профиль";
             mainPage = new MainPage();
             App.isSend = false;
         }

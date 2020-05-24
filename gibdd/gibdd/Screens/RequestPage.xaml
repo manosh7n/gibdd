@@ -5,10 +5,13 @@
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              xmlns:local="clr-namespace:gibdd;assembly=gibdd"
              x:Class="gibdd.Screens.RequestPage">
-
+       <NavigationPage.TitleView>
+              <Label Text="Подать обращение" 
+                     FontSize="Large" 
+                     TextColor="Black"/>
+       </NavigationPage.TitleView>
        
-              <StackLayout>
-                     <ScrollView>
+       <ScrollView>
         <StackLayout>
                <Frame>
                 <Grid>
@@ -200,36 +203,39 @@
                                 IsVisible="{Binding Source={x:Reference Name=alreadyApplied}, Path=IsToggled}" />
                 </Grid>
             </Frame>
-               <Frame>
-                      <StackLayout>
-                             <Label Text="Текст обращения" VerticalTextAlignment="Center"/>
-                             <Editor x:Name="editor" IsEnabled="False"/>
-                      </StackLayout>
-               </Frame>
-               <Frame>
-                      <StackLayout>
-                             <Label Text="Фотографии" VerticalTextAlignment="Center"/>
-                             <StackLayout>
-                                    <ListView x:Name="imgList" 
-                                              ItemsSource="{Binding}"
-                                              HeightRequest="300">
-                                           <ListView.ItemTemplate> 
-                                                  <DataTemplate>
-                                                         <ViewCell> 
-                                                                <StackLayout>  
-                                                                       <Image Source="{Binding imageSource}" HeightRequest="200" WidthRequest="200"></Image>  
-                                                                </StackLayout>  
-                                                         </ViewCell>  
-                                                  </DataTemplate>
-                                           </ListView.ItemTemplate>
-                                    </ListView>
-                                    <Label Text="testLabel" />
-                             </StackLayout>
-                      </StackLayout>
-               </Frame>
-               <Button Text="Подать" Clicked="send"/>
+               
+            <Frame>
+                   <StackLayout>
+                          <Label Text="Текст обращения" VerticalTextAlignment="Center"/>
+                          <Editor x:Name="editor" IsEnabled="False"/>
+                   </StackLayout>
+            </Frame>
+            <Frame>
+                   <StackLayout>
+                          <Label Text="Фотографии"/>
+                          <ListView x:Name="imgList" 
+                                    ItemsSource="{Binding}"
+                                    VerticalOptions="Start"
+                                    HorizontalOptions="Center"
+                                    RowHeight="150"
+                                    HeightRequest="200"
+                                    SeparatorColor="Black">
+                             <ListView.ItemTemplate> 
+                                    <DataTemplate>
+                                           <ViewCell >
+                                                  <Image Source="{Binding imageSource}" 
+                                                         Aspect="AspectFill"/>  
+                                           </ViewCell>  
+                                    </DataTemplate>
+                             </ListView.ItemTemplate>
+                          </ListView>
+                      
+                   </StackLayout>
+            </Frame>
+               
+            <Button Text="Подать" 
+                       Clicked="send"
+                       Style="{StaticResource buttonMain}"/>
         </StackLayout>
     </ScrollView>
-</StackLayout>
-
 </ContentPage>

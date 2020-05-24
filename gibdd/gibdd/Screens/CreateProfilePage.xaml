@@ -4,7 +4,13 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:gibdd"
              x:Class="gibdd.CreateProfilePage">
-             
+       
+       <NavigationPage.TitleView>
+              <Label Text="Создать профиль" 
+                     FontSize="Large" 
+                     TextColor="Black"/>
+       </NavigationPage.TitleView>
+       
     <ScrollView>
         <StackLayout>
             <Frame>
@@ -27,14 +33,17 @@
                     <Label Text="Регион" 
                            Grid.Row="1" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Picker x:Name="regionAdressed" Title="Регион" 
+                    <Picker x:Name="regionAdressed" Title="(Обязательно)" 
+                            TitleColor="Brown"
                             ItemsSource="{x:Static local:Regions.regions}" 
                             Grid.Row="1" Grid.Column="1"/>
                     <Label Text="Подразделение" 
                            Grid.Row="2" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="subdivision" Placeholder="Подразделение" 
-                           Grid.Row="2" Grid.Column="1" />
+                    <Entry x:Name="subdivision" Placeholder="(Обязательно)" 
+                           Grid.Row="2" Grid.Column="1" 
+                           PlaceholderColor="Brown"
+                    />
                     <Label Text="Должность" 
                            Grid.Row="3" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
@@ -76,7 +85,8 @@
                     <Label Text="Ф.И.О." 
                            Grid.Row="2" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="fio" Placeholder="ФИО" 
+                    <Entry x:Name="fio" Placeholder="(Обязательно)"
+                           PlaceholderColor="Brown"
                            Grid.Row="2" Grid.Column="1" />
                     <Label Text="Наименование организации" 
                            Grid.Row="3" Grid.Column="0" 
@@ -89,15 +99,16 @@
                            Grid.Row="4" Grid.Column="0" 
                            IsVisible="{Binding Source={x:Reference Name=organisation}, Path=IsToggled}" 
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="addInfo" Placeholder="Бла бла" 
+                    <Entry x:Name="addInfo" Placeholder="Доп. информация" 
                            Grid.Row="4" Grid.Column="1" 
                            IsVisible="{Binding Source={x:Reference Name=organisation}, Path=IsToggled}"/>
                     <Label Text="Исходящий №" 
                            Grid.Row="5" Grid.Column="0" 
                            IsVisible="{Binding Source={x:Reference Name=organisation}, Path=IsToggled}"  
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="outNumb" Placeholder="123" 
+                    <Entry x:Name="outNumb" Placeholder="Исходящий №" 
                            Grid.Row="5" Grid.Column="1" 
+                           Keyboard="Numeric"
                            IsVisible="{Binding Source={x:Reference Name=organisation}, Path=IsToggled}"/>
                     <Label Text="Дата регистрации документа в организации" 
                            Grid.Row="6" Grid.Column="0" 
@@ -111,8 +122,9 @@
                            Grid.Row="7" Grid.Column="0" 
                            IsVisible="{Binding Source={x:Reference Name=organisation}, Path=IsToggled}" 
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="letterNumb" Placeholder="331" 
+                    <Entry x:Name="letterNumb" Placeholder="№ заказного письма" 
                            Grid.Row="7" Grid.Column="1" 
+                           Keyboard="Numeric"
                            IsVisible="{Binding Source={x:Reference Name=organisation}, Path=IsToggled}"/>
                 </Grid>
             </Frame>
@@ -135,12 +147,15 @@
                     <Label Text="Адрес электронной почты" 
                            Grid.Row="1" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="email" Placeholder="почта" 
+                    <Entry x:Name="email" Placeholder="(Обязательно)"
+                           PlaceholderColor="Brown"
+                           Keyboard="Email"
                            Grid.Row="1" Grid.Column="1" />
                     <Label Text="Телефон" 
                            Grid.Row="2" Grid.Column="0" 
                            VerticalTextAlignment="Center"/>
-                    <Entry x:Name="phone" Placeholder="+39821938" 
+                    <Entry x:Name="phone" Placeholder="Номер телефона" 
+                           Keyboard="Telephone"
                            Grid.Row="2" Grid.Column="1" />
                     <Label Text="Место события регион" 
                            Grid.Row="3" Grid.Column="0" 
@@ -185,7 +200,9 @@
                 </Grid>
             </Frame>
                
-            <Button Text="Добавить профиль" Clicked="AddProfile"/>
+            <Button Text="Добавить профиль" 
+                    Clicked="AddProfile"
+                    Style="{StaticResource buttonMain}"/>
         </StackLayout>
     </ScrollView>
     

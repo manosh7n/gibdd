@@ -12,6 +12,7 @@ namespace gibdd
     {
         private ProfileData profile { get; set; }
         public ObservableCollection<Images> img { get; set; }
+        public bool isShowStory = false;
 
         public ComplaintPage()
         {
@@ -86,11 +87,9 @@ namespace gibdd
         private async void deleteImage(object sender, ItemTappedEventArgs e)
         {
             var answer = await this.DisplayAlert("Удаление", "Удалить фото?", "Да", "Нет");
-            if (answer)
-            {
-                img.RemoveAt(e.ItemIndex);
-               attachCheck();
-            }
+            if (!answer) return;
+            img.RemoveAt(e.ItemIndex);
+            attachCheck();
         }
 
         private async void sendRequest(object sender, EventArgs e)
@@ -116,16 +115,28 @@ namespace gibdd
         {
             if (img.Count == 0)
             {
+                imgList.IsVisible = false;
                 sendButton.IsEnabled = false;
             }
             else
             {
+                imgList.IsVisible = true;
                 sendButton.IsEnabled = true;
             }
         }
 
         private void showLastMessages(object sender, EventArgs e)
         {
+            if (!isShowStory)
+            {
+                buttonArrow.Source = ImageSource.FromFile("upChevron.png");
+                isShowStory = true;
+            }
+            else
+            {
+                buttonArrow.Source = ImageSource.FromFile("downChevron.png");
+                isShowStory = false;
+            }
             listMessage.IsVisible = !listMessage.IsVisible;
         }
         

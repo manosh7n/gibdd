@@ -2,15 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gibdd.IntroPage">
- 
-        <StackLayout>
-            <ListView x:Name="listProfiles" ItemsSource="{Binding}" ItemSelected="toMainPage">
+    
+    <NavigationPage.TitleView>
+        <Label Text="Выберите профиль" 
+               HorizontalTextAlignment="Center" 
+               FontSize="Large" 
+               TextColor="Black"/>
+    </NavigationPage.TitleView>
+    
+    <StackLayout>
+        <ListView x:Name="listProfiles" 
+                  ItemsSource="{Binding}" 
+                  ItemSelected="toMainPage"
+                  HasUnevenRows="True"
+                  SeparatorColor="Gray">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <StackLayout>
-                                    <Label Text="{Binding fio, StringFormat='Ф.И.О. {0}'}" />
+                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding regionAdressed, StringFormat='Регион {0}'}" />
+                                    <Label Text="{Binding subdivision, StringFormat='Подразделение {0}'}" />
+                                    <Label Text="{Binding fio, StringFormat='Ф.И.О. {0}'}"/>
                                     <Label Text="{Binding email, StringFormat='Адрес электронной почты {0}'}" />
                                 </StackLayout>
                             </ViewCell.View>
@@ -18,7 +31,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Text="Создать профиль" Clicked="createProfile"/>
-        </StackLayout>
+        
+        <Button Text="Создать профиль" 
+                Clicked="createProfile" 
+                Style="{StaticResource buttonMain}"/>
+    </StackLayout>
     
 </ContentPage>

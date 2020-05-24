@@ -5,8 +5,17 @@
              xmlns:local="clr-namespace:gibdd;assembly=gibdd"
              x:Class="gibdd.ProfilePage">
        
+       <NavigationPage.TitleView>
+              <Label Text="Данные профиля" 
+                     HorizontalTextAlignment="Center" 
+                     FontSize="Large" 
+                     TextColor="Black"/>
+       </NavigationPage.TitleView>
+       
        <StackLayout>
-       <Button Text="Сохранить изменения" Clicked="saveChanges"/>
+       <Button Text="Сохранить изменения" 
+               Clicked="saveChanges"
+               Style="{StaticResource buttonAdd}"/>
        <ScrollView>
         <StackLayout>
                <Frame>
@@ -186,7 +195,10 @@
                                 IsVisible="{Binding Source={x:Reference Name=alreadyApplied}, Path=IsToggled}" />
                 </Grid>
             </Frame>
-               <Button Text="Удалить профиль" Clicked="deleteProfile"/>
+               <Button Text="Удалить профиль" 
+                       Clicked="deleteProfile"
+                       Style="{StaticResource buttonMain}"
+                       BackgroundColor="Maroon"/>
         </StackLayout>
     </ScrollView>
 </StackLayout>
