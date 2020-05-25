@@ -7,11 +7,13 @@ namespace gibdd.Screens
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FullScreenPage : ContentPage
     {
-        public Image img { get; set; }
+        public ImageSource img { get; set; }
+
         public FullScreenPage(Images item)
         {
+            BindingContext = this;
+            img = item.imageSource;
             InitializeComponent();
-            BackgroundImageSource = item.imageSource;
         }
 
         private async void back(object sender, EventArgs e)

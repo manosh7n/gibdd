@@ -8,7 +8,7 @@ namespace gibdd
         {
             try
             {
-                return Regex.IsMatch(name, @"^[a-z]+(?:\W[a-z]+)+$", RegexOptions.IgnoreCase);
+                return Regex.IsMatch(name, @"^[а-я]+(?:\W[а-я]+)+$", RegexOptions.IgnoreCase);
             }
             catch (Exception)
             {

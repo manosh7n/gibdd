@@ -3,9 +3,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="gibdd.Screens.FullScreenPage">
-    <StackLayout VerticalOptions="FillAndExpand">
+    
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 BackgroundColor="Black">
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Tapped="back"/>
         </StackLayout.GestureRecognizers>
+        <Image
+            Aspect="AspectFit"
+            Source="{Binding img}"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+        </Image>
     </StackLayout>
 </ContentPage>
